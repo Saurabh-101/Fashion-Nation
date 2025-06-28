@@ -41,7 +41,6 @@ const placeOrderStripe = async(req,res)=>{
 
     
 
-
 }
 
 // Placing order with RazorPay
@@ -89,6 +88,25 @@ const userOrders = async(req,res)=>{
 
 // update order status from admin panel
 const updateStatus = async(req,res)=>{
+
+    try {
+        
+        const {orderId, status} = req.body;
+
+        const order = await orderModel.findByIdAndUpdate(orderId,{status});
+
+        res.json({
+            success:true,
+            msg:"Status Updated successfully."
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.json({
+            success:false,
+            msg:error.message
+        })
+    }
 
 }
 export {placeOrder, placeOrderRazorpay,placeOrderStripe,allOrders,userOrders,updateStatus} 
