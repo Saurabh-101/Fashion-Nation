@@ -52,6 +52,20 @@ const placeOrderRazorpay = async(req,res)=>{
 // Display order on admin panel
 const allOrders = async(req,res)=>{
 
+    try {
+        const orders = await orderModel.find({});
+        res.json({
+            success:true,
+            orders
+        })
+    } catch (error) {
+        console.log(error);
+        res.json({
+            success:false,
+            msg:error.message
+        })
+    }
+
 }
 
 // Display user order data on client side
