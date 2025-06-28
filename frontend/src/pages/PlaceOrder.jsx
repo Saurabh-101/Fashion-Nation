@@ -68,7 +68,10 @@ const PlaceOrder = () => {
             }
             break;
           case 'razorpay':
-
+              toast.error("Razorpay is not available currently.");
+            break;
+          case 'stripe':
+              toast.error("Stripe is not available currently.");
             break;
           default:
             break;
