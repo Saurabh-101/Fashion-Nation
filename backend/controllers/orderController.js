@@ -56,7 +56,21 @@ const allOrders = async(req,res)=>{
 
 // Display user order data on client side
 const userOrders = async(req,res)=>{
+    try {
+        const {userId} = req.body;
+        const orders = await orderModel.find({userId});
+        res.json({
+            success:true,
+            orders
+        })
 
+    } catch (error) {
+        console.log(error);
+        res.json({
+            success:false,
+            msg:error.message
+        })
+    }
 } 
 
 // update order status from admin panel
