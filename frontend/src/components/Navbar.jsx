@@ -5,13 +5,13 @@ import { ShopContext } from '../context/ShopContext';
 const Navbar = () => {
     const [visible, setVisible] = useState(false);
 
-    const {showSearch,setShowSearch, getCartCount, navigate, setToken, token, setCartItmes} = useContext(ShopContext);
+    const {showSearch,setShowSearch, getCartCount, navigate, setToken, token, setCartItems} = useContext(ShopContext);
 
     const logout = ()=>{
         navigate('/login');
         localStorage.removeItem("token");
         setToken("");
-        setCartItmes({});
+        setCartItems({});
         
     }
   return (
